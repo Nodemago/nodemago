@@ -1,6 +1,6 @@
-var CACHE_NAME = 'image-map-v3';
+var CACHE_NAME = 'nodemago-v1';
 var CACHE_URLS = [
-  '/image-map/pmas_v26_firebase.html'
+  '/nodemago/'
 ];
 // インストール時にHTMLをキャッシュ
 self.addEventListener('install', function(e) {
@@ -29,7 +29,7 @@ self.addEventListener('activate', function(e) {
 // リクエスト時：オンラインなら最新を取得・オフライン時はキャッシュを返す
 self.addEventListener('fetch', function(e) {
   // HTMLファイルのみキャッシュ対象
-  if (e.request.url.indexOf('pmas_v26_firebase.html') !== -1) {
+  if (e.request.url.indexOf('index.html') !== -1) {
     e.respondWith(
       fetch(e.request)
         .then(function(response) {

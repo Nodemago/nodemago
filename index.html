@@ -6,10 +6,23 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
     <title>nodemago-react</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap">
-    <script type="module" crossorigin src="./assets/index-DIwgkvoe.js"></script>
+    <script type="module" crossorigin src="./assets/index-CXYG_8Y1.js"></script>
     <link rel="stylesheet" crossorigin href="./assets/index-DCcprzLQ.css">
   </head>
   <body>
     <div id="root"></div>
+    <script>
+      // 旧アプリのService Workerの後片付け（登録が残っている端末だけで動く）
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations()
+          .then(function (rs) { rs.forEach(function (r) { r.unregister(); }); })
+          .catch(function () {});
+        if (window.caches && caches.keys) {
+          caches.keys()
+            .then(function (ks) { ks.forEach(function (k) { caches.delete(k); }); })
+            .catch(function () {});
+        }
+      }
+    </script>
   </body>
 </html>
